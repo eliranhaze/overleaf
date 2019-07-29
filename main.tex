@@ -1,0 +1,340 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\linespread{1.5} % 1.3 = 1.5 space
+
+\usepackage[parfill]{parskip}
+\usepackage{commands}
+
+\begin{document}
+ 
+\title{The Ramsey test and triviality results}
+\author{Eliran Haziza}
+\maketitle
+
+Ramsey (1931) wrote:
+
+\begin{quote}
+If two people are arguing `If $p$, then $q$?' and are both in doubt as to $p$, they are adding p hypothetically to their stock of knowledge and arguing on that basis about $q$; so that in a sense `If $p$, $q$' and `If $p$, $\neg q$' are contradictories. We can say that they are fixing their degree of belief in $q$ given $p$.
+\end{quote}
+
+The Ramsey test is the hypothesis that to accept a conditional is to accept its consequent on the supposition that its antecedent is true. The Ramsey test is intuitively plausible, but it has been shown to conflict with some plausible requirements of belief revision. A second hypothesis that the quote above suggests is that one's degree of belief in a conditional is the conditional probability one assigns to the consequent given the antecedent. This too has been shown to lead to inconsistency given some plausible assumptions. But although these two results are commonly accepted, authors disagree on what to take from them. For instance, should we reject the Ramsey test? Or perhaps we should reject some other assumptions about belief revision, or perhaps some assumptions about conditionals? In what follows I discuss the two results. I begin by introducing the AGM theory of belief revision. I then present the triviality result for the Ramsey test and discuss possible implications. Next I present the triviality result for the probabilistic version of the hypothesis, and discuss some possible connections to the AGM result.
+
+\section{AGM}
+
+AGM is a theory that provides rational constraints on belief revision, expansion, and contraction. In this section I introduce the postulates of AGM for expansion and revision, and the triviality result that follows for a version of the Ramsey test, as presented in \gff{}.
+
+\subsection{Postulates}
+
+Let \textbf{L} be a set of sentences closed under $\neg,\lor,\land,\rightarrow$. A belief set is represented by a set of sentences of \textbf{L} that is closed under logical consequence. The set of all belief sets is \textbf{K}.
+
+First consider expansion. Rational belief expansion is simply the addition of new beliefs to a belief set. Let $+: \textbf{K}\times\textbf{L} \rightarrow \textbf{K}$ be a function from pairs of belief sets and sentences to belief sets, and let $K_A^+$ be the result of applying $+$ to the belief set $K$ and sentence $A$. Belief expansion is governed by the following postulates:
+
+$\pst{+1}$ $K_A^+$ is a belief set.
+
+$\pst{+2}$ $A\in K_A^+$.
+
+$\pst{+3}$ $K \subseteq K_A^+$.
+
+$\pst{+4}$ If $A\in K$, then $K_A^+ = K$.
+
+$\pst{+5}$ If $K\subseteq H$, then $K_A^+ \subseteq H_A^+$.
+
+$\pst{+6}$ $K_A^+$ is the smallest belief set satisfying $\pst{+1}$-$\pst{+5}$.
+
+Postulate $\pst{+2}$ says that the added belief must be part of the new belief set. $\pst{+3}$ is a principle of preservation which says that the new belief set must only expand the input belief set, and not revise any existing belief. Since we are considering belief expansion, this is reasonable. $\pst{+4}$ says if $A$ is already believed then nothing is changed by expansion. $\pst{+5}$ says that the expansion function is monotonic. Finally, $\pst{+6}$ says that expansion should not add anything unnecessary to the belief set. \gf{} shows that postulates $\pst{+1}$-$\pst{+6}$ determine a unique expansion function, such that $K_A^+$ is the logical closure of $K\cup \{A\}$. Thus, in rational belief expansion we add to an existing belief set the new belief, all its logical consequence, and all of the logical consequences of the new belief and the existing beliefs.
+
+Next there is belief revision. Rational belief revision is the operation of adding a new belief, which possibly conflicts with what is already believed by the agent, and revising the belief set in light of that addition. [SAY SOMETHING about minimal revision]
+Let $*: \textbf{K}\times\textbf{L} \rightarrow \textbf{K}$ be a function from pairs of belief sets and sentences to belief sets, and let $K_A^*$ be the result of applying $*$ to the belief set $K$ and sentence $A$. Belief revision is governed by the following postulates:
+
+$\pst{*1}$ $K_A^*$ is a belief set.
+
+$\pst{*2}$ $A\in K_A^*$.
+
+$\pst{*3}$ $K_A^* \subseteq K_A^+$.
+
+$\pst{*4}$ If $\neg A\not\in K$, then $K_A^+ \subseteq K_A^*$.
+
+$\pst{*5}$ $K_A^* = K_\bot$ iff $\vDash \neg A$.
+
+$\pst{*6}$ If $\vDash A\leftrightarrow B$, then $K_A^* = K_B^*$.
+
+$\pst{*7}$ $K_{A\land B}^* \subseteq (K_A^*)_B^+$.
+
+$\pst{*8}$ If $\neg B\not\in K_A^*$, then $(K_A^*)_B^+ \subseteq K_{A\land B}^*$.
+
+Postulate $\pst{*2}$ says that $A$ must be part of the revised belief set. $\pst{*3}$ says that revision doesn't add any belief that expansion doesn't, and together with $\pst{*4}$ it says that expansion and revision are identical if the new belief is  compatible with what is already believed. $\pst{*5}$ says that revision leads to an inconsistent belief set when $A$ is inconsistent, and vice versa. $\pst{*6}$ says that revisions by logically equivalent beliefs yield the same belief sets. Finally, $\pst{*7}$ say that revising by $A\land B$ results in a subset of first revising by $A$ and then expanding by $B$, while $\pst{*8}$ says that if $B$ is compatible with revision by $A$, then the results are identical. Unlike belief expansion, the constraints on revision do not determine a unique revision function.
+
+\subsection{The Ramsey test}
+
+To formulate the Ramsey test in AGM, add the conditional connective $>$ to \textbf{L} to obtain $\mathbf{L'}$. Then the Ramsey test is:
+
+(RT) $A>C \in K$ iff $C \in K_A^*$.
+
+That is, $A>C$ is believed just in case $C$ would be believed after revision by $A$. Note that this formulation of the Ramsey test equates acceptance of a conditional with belief in a conditional. This is a crucial assumption, and will be discussed later.
+
+From the postulates of expansion and revision \gf{} derives a triviality theorem for (RT). Say that a belief revision system $\langle \mathbf{K}, * \rangle$ is \textit{non-trivial} iff there are at least three pairwise disjoint sentences $A,B,C$ and a belief set $K$ that is consistent with them, i.e., $\neg A, \neg B, \neg C \not\in K$. We then have:
+
+\textbf{Triviality Theorem.} There is no non-trivial belief revision system that satisfies (RT), $\pst{*4}$, and $\pst{*5}$.
+
+First, it is shown that (RT) entails the following principle of monotonicity:
+
+$\pst{*M}$ If $K \subseteq K'$, then $K_A^* \subseteq {K'}_A^*$.
+
+\begin{proof}
+Suppose $K \subseteq K'$ and $C\in K_A^*$. Then by (RT) $A>C \in K$ and thus $A>C \in K'$. By (RT) again we get $C\in {K'}_A^*$.
+\end{proof}
+
+Additionally, note the following principles, which follow from the postulates of expansion and will be used in the proof:\footnotemark
+
+(Dis) $K_{A\lor B}^+ \subseteq K_{A}^+$
+
+(Con) $(K_A^+)_B^+ = K_{A\land B}^+$
+
+\footnotetext{These are called (7.3) and (7.4) in \gffp{158}.} 
+
+For the proof of the triviality theorem, it is shown that no non-trivial belief revision system satisfies $\pst{*M}$, $\pst{*4}$, and $\pst{*5}$.
+
+\begin{proof}
+Suppose for reductio that $\langle \mathbf{K}, * \rangle$ is a non-trivial belief revision system that satisfies $\pst{*M}$, $\pst{*4}$, and $\pst{*5}$. Then there are pairwise disjoint sentences $A,B,C$ such that $K_A^+$, $K_B^+$, $K_C^+$, $K_{A\lor B}^+$, $K_{A\lor C}^+$ are consistent belief sets.
+
+Consider $(K_{A\lor B}^+)_{B\lor C}^*$. We have $\neg(B \lor C) \not\in K_{A\lor B}^+$, and by $\pst{*4}$, we have $(K_{A\lor B}^+)_{B\lor C}^+ \subseteq (K_{A\lor B}^+)_{B\lor C}^*$.
+
+By (Con), $(K_{A\lor B}^+)_{B\lor C}^+ = K_{(A\lor B) \land (B\lor C)}^+$. Since $A,B,C$ are pairwise disjoint, $(A\lor B) \land (B\lor C)$ is equivalent to $B$, and so $K_{(A\lor B) \land (B\lor C)}^+ = K_B^+$. It follows that $B \in (K_{A\lor B}^+)_{B\lor C}^*$.
+
+By (Dis), $K_{A\lor B}^+ \subseteq K_A^+$. And since $B \in (K_{A\lor B}^+)_{B\lor C}^*$, it follows from $\pst{+M}$ that $B \in (K_A^+)_{B\lor C}^*$. Similar reasoning shows that $C \in (K_A^+)_{B\lor C}^*$.
+
+It follows that $B \land C \in (K_A^+)_{B\lor C}^*$. But $B$ and $C$ are pairwise disjoint, and so $(K_A^+)_{B\lor C}^* = K_\bot$. This contradicts $\pst{*5}$ and the fact that $\not\vDash \neg(B \lor C)$. 
+\end{proof}
+
+\subsection{Discussion of the result}
+
+\subsubsection{Rejecting the Ramsey test}
+
+What should we make of the triviality result? One thought is that it shows that the Ramsey test is untenable. Here are some arguments for this. First, \gf{} argues that rational belief revision is not monotonic.\footnote{\gffp{159}.} That is, that $\pst{*M}$ should be rejected. And since $\pst{*M}$ is entailed by (RT), the latter should be rejected as well.
+
+Monotonicity implies that if we believe $A$, would retain $A$ given $B$, and would retain $A$ given $C$, then we should retain $A$ given $B$ and given $C$. But in some cases, as \gf's argument shows, we should give up $A$ once we learn both $B$ and $C$. For instance, $A,B,C$ might be jointly inconsistent and it would be most rational to reject $A$.
+
+Here's \gf's argument. Let $A$ be the proposition that Johan has blood type AB, $C$ the proposition that Johan is Victoria's father, and $K$ Victoria's belief set. Suppose Victoria doesn't know anything about Johan's blood type. She believes Johan is her father, and if she were to learn that he has blood type AB, she would still believe he is her father. Thus $C\in K$ and $C\in K_A^*$. Suppose she then learns some facts about blood types entailing the fact that if Johan is her father then he cannot have blood type AB. That is, she learns $C > \neg A$. That is compatible with her current beliefs, since she doesn't know what Johan's blood type is, so $K \subseteq K_{C > \neg A}^*$. But, if she now learned $A$, that is, that Johan has blood type AB, then she would no longer believe that he is her father. That is, $C \not\in (K_{C > \neg A}^*)_A^*$. Thus we have $K \subseteq K_{C > \neg A}^*$ but $K_A^* \not\subseteq (K_{C > \neg A}^*)_A^*$, contradicting $\pst{*M}$.
+
+\gf's argument undermines $\pst{*M}$ and thus (RT). It thus gives us an independent reason to reject (RT), and combined with the triviality result presents a strong case against (RT). \brad{}, however, rejects the argument against monotonicity, as follows.\footnote{\bradp{8}. \gf{} actually gives two arguments against monotonicity (1988, pp. 59-60 and 159), and Bradley rejects only one of them, ignoring the one presented here. I adapt his rejection to the present argument.} Let $A,C,K$ denote the same as in the above argument. Assuming (RT), $A > C\in K$ since $C \in K_A^*$. And since $A > \neg C$ implies $C > \neg A$, we have $A > \neg C \in K_{C > \neg A}^*$. Now, given the following principle:
+
+(CC) If $B,C \vDash \bot$, then $A > B, A > C \vDash \bot$.
+
+Then, in particular, $A>C$, $A>\neg C$ are inconsistent. So, since $A>C \in K$ and $A>\neg C \in K_{C > \neg A}^*$, either $K \not\subseteq K_{C > \neg A}^*$ or $K_{C > \neg A}^*$ is inconsistent and thus not a legitimate epistemic state. Either way, the argument against $\pst{*M}$ is blocked, as monotonicity doesn't apply. It might seem question begging of Bradley to assume (RT) in order to reject \gf's argument, as the latter is ultimately an argument against (RT). But Bradley's argument simply shows that (RT) does not have the problematic consequences illustrated above. We might also question the assumption of (CC), but that is a plausible consequence of the Ramsey test. For supposing $A$ and concluding $\neg C$ is both a rejection of $A>C$ and an acceptance of $A>\neg C$, according to the test.\footnote{This is also endorsed by Ramsey in the quote above.}
+
+Here's another way to construe Bradley's argument. Something close to (CC) follows from (RT) and blocks the problematic case. Suppose $A$ is a consistent proposition and $K$ a consistent belief set. Then it follows from (RT) that either $A>C\not\in K$ or $A>\neg C\not\in K$ for any $C$. That is, any belief set including the pair $A>C,A>\neg C$ is inconsistent.
+
+\begin{proof}
+Suppose $\not\vDash \neg A$, $K\neq K_\bot$, and suppose for reductio that $A>C,A>\neg C\in K$. Then by (RT) $C \in K_A$ and $\neg C \in K_A$. Thus $K_A = K_\bot$, contradicting $\pst{*5}$.
+\end{proof}
+
+Returning to \gf's example, when Victoria is disposed to retain $C$ if she were to learn $A$, that is, when $A>C \in K$, the new information $C>\neg A$ (and thus $A>\neg C$) is in fact not consistent with her belief state. In this way (RT) blocks the argument.
+
+So we might want to reject (RT) because it implies monotonicity, but that argument might be resisted. There are, however, other reasons to reject (RT). Consider the following example:
+
+\begin{quote}
+Suppose I accept that if Hitler had decided to invade England in 1940, Germany would have won the war. Then suppose I discover, to my surprise, that Hitler did in fact decide to invade England in 1940 (although he never carried out the plan). Am I now disposed to accept that Germany won the war? No, instead I will give up my belief in the conditional.\footnote{Stalnaker (1984, p. 105), cited in \gffp{166}.}
+\end{quote}
+
+The case suggest that it's sometimes rational to accept $A > C$ but to deny $C$ given $A$. Why would you deny $C$ given $A$? Perhaps your belief in $\neg C$ is much stronger than your belief in $A>C$, so you would reject the latter rather than the former. This is thus a counterexample to the Ramsey test: you accept a conditional, but you would not accept the consequent were you to accept the antecedent.
+
+We might conclude that this is because the Ramsey test does not hold for subjunctive conditionals. But similar counterexamples with indicative conditionals exist. Consider:
+
+\begin{quote}
+Suppose I believe that the death of Murdoch isn't a murder. However, I'm convinced by Sherlock Holmes that it is, and that Brown is the murderer. I thus accept that if Brown didn't kill Murdoch, someone else did. But when I learn that Brown in fact did not kill Murdoch, I lose faith in Holmes, and I conclude that no one killed Murdoch.\footnote{This is my reconstruction of McGee's (2000) example.}
+\end{quote}
+
+In this case, too, although I accept a conditional $A>C$, I am inclined to reject $A>C$ rather than infer $C$ once I learn $A$. Now we have a counterexample to the Ramsey test involving an indicative conditional.
+
+However, I think these two objections to the Ramsey test can be resisted. I suggest we distinguish between belief and supposition. Assume I accept that if Hitler invaded England, Germany would have won. I then hypothetically consider what would happen if Hitler had done so. I conclude that Germany would have won. That is, when I suppose the antecedent, I arrive at the consequent, and this follows from my acceptance of the conditional. But things are different when I learn that the antecedent is true, and not merely supposed it. When I actually believe the antecedent, I am compelled to reject the conditional because of my belief in the falsity of the consequent. I don't know how to account for this difference between belief and supposition, but it's surely there. Perhaps what is going on is that when I suppose a proposition I consider a possible world in which that proposition holds and reason about that world, but when I add a belief to my belief state or even just pretend to do so, I proceed to reason about the actual world. In many cases there is no difference between what follows from a belief and what follows from a supposition, so it might be natural to think of the Ramsey test in terms of belief, but a more plausible reading of the Ramsey test (whether that was his intention or not) involves supposition of the antecedent and not belief.
+
+Another reason to interpret the Ramsey test as involving supposition is given by a second group of counterexamples to the test. Chalmers and \hjk{} (2007) argue that the Ramsey test has the implausible consequence that rational agents believe they are omniscient. The argument proceeds as follows. According to the Ramsey test, I should accept `If $p$, then I believe $p$', as I must accept that I believe that $p$ when I accept $p$, for Moorean reasons. Similarly, the test implies that I should accept `If I believe $p$, then $p$'. It follows that I should believe `$p$ iff I believe $p$', for all $p$, which is implausible.
+
+The problematic result is avoided if the test involves supposition and not belief.\footnote{This is Leitgeb's (2011) suggestion in reply to Chalmers and \hjk{}, and a similar point is made by Barnett (2008).} If I only suppose that $p$, and not actually believe $p$, there's no reason to accept that I believe $p$ in the context of the supposition. If when I suppose $p$ I consider a possible world where $p$ holds, I also reason about myself in that world from a third-person perspective, and thus I'm not compelled to think that, in that world, I believe that $p$.
+
+It might be questioned whether a result similar to Chalmers and \hjk's doesn't also follow in the case of supposition as I described it. Shouldn't I accept `If $p$, then I would believe $p$', leading to a similarly problematic conclusion? The answer is no. When I consider a possible world where $p$ is true, there's no reason to accept that I also believe $p$ in that world. There's nothing problematic about `In that possible world, $p$, but (in that world) I don't believe $p$'. 
+
+A similar counterexample is avoided by invoking supposition.\footnote{Bennett (2003, p. 29).} Consider: `If my business partner is cheating me, I will never realize that he is'. If I add `My business partner is cheating me' to my current beliefs, I cannot at the same time accept `I will never realize that he is cheating me', since in the new state I believe that he is. But this is avoided if the antecedent is merely supposed and not believed.
+ 
+The suppositional version of the Ramsey test avoids the two kinds of counterexamples considered above. But this doesn't vindicate (RT), as formulated in the AGM framework, for (RT) represents a version of the Ramsey test that involves belief and not mere supposition. (RT), then, is susceptible to the above counterexamples.
+
+To sum up, we have considered several reasons to reject (RT): first, that it implies monotonicity of belief revision, which is controversial; second, that it is open to counterexamples where one accepts a conditional but would reject it given its antecedent; and third, that it is open to counterexamples that involve introspection. Rejecting (RT), however, doesn't mean rejecting the Ramsey test, as its suppositional version seems to escape the counterexamples considered above.
+
+\subsubsection{Rejecting other assumptions}
+
+There may be ways out of the triviality result other than rejecting (RT). \gf{} takes his theorem to present a conflict between (RT) and $\pst{*4}$ (commonly called Preservation), and rejects the former. \brad{}, however, argues that Preservation should be rejected instead. The principle of Preservation that Bradley considers is:
+
+If $\neg A\not\in K$, then $K \subseteq K_A^*$.
+
+Which is an immediate consequence of $\pst{*4}$ and $\pst{+3}$. The idea behind Preservation is that minimal belief revision is such that beliefs are retained unless contradicted. Here's Bradley's argument against Preservation. Suppose there are three urns, A, B, and C. Exactly one of the urns contains a prize, but I don't know which. So $A,B,C,\neg A,\neg B,\neg C  \not\in K$. Further, I believe that if the prize is in A or B, then if it's not in A it's in B, and if the prize is in A or C, then if it's not in A it's in C. That is, $(A \lor B)>(\neg A > B) \in K$ and $(A \lor C)>(\neg A > C) \in K$. I then learn that $A$. By Preservation, $(A \lor B)>(\neg A > B) \in K_A^*$ and $(A \lor C)>(\neg A > C) \in K_A^*$. But also $A \lor B,A \lor C \in K_A^*$ since they are logical consequences of $A$. By Modus Ponens, $\neg A > B, \neg A > C \in K_A^*$. But that means that upon learning $A$ I should believe that if the prize is not in A it's in B and if the prize is not in A it's in C, which might seem implausible and also contradicts (CC) considered earlier:
+
+(CC) If $B,C \vDash \bot$, then $A > B, A > C \vDash \bot$.
+
+Bradley concludes that Preservation combined with Modus Ponens forces a material implication interpretation of conditionals and should thus be rejected. He suggests that Preservation should not apply to conditionals.
+
+Here's another argument against Preservation. Preservation says that If $A$ is consistent with my current beliefs, then I should retain all my beliefs when I learn that $A$. But if we think of beliefs in terms of probability, where believing something is a matter of having high subjective probability, Preservation is implausible. $A$ might be logically compatible with my current beliefs, but it might also be negatively correlated with some of them, such that, learning $A$, I should lower some of my subjective probabilities and give up some of my beliefs. For example, suppose I believe that the next random number a program outputs between 1 and 100 is not 99. I then learn that the number is divisible by 33. That is consistent with my belief that the number isn't 99, but it seems no longer reasonable to believe that given the new information. Perhaps, however, a different preservation principle should be formulated for degrees of belief. For instance, we might require doxastic and not only logical compatibility. This might rule out such cases.
+
+Another assumption in the triviality theorem that has been questioned is (Dis):
+
+(Dis) $K_{A\lor B}^+ \subseteq K_{A}^+$
+
+Here's an argument against (Dis) based on the one in Leitgeb (2010).\footnote{Leitgeb (2010, p. 45).} Suppose there are three urns A, B, and C, only one of which contains a prize. Suppose I learn that the prize is in A or B. Then I could reason that if the prize is in B or C then it's in B. That is, $(B \lor C) > B \in K_{A \lor B}^+$. But I could not similarly reason if I learn that the prize is in A. That is, $(B \lor C) > B \not\in K_A^+$, contradicting (Dis). 
+
+(Dis) seems to be a crucial step in \gf's proof.\footnote{It's also a crucial step in Rott's (1989) version of the proof. But it's not used in the proof I provide below (see Section 2.2.2), although my degree of belief in the correctness of that proof isn't very high!} If it is rejected completely, then, the result is avoided. However, Leitgeb's argument works against (Dis) only for conditionals. Leitgeb then proposes to qualify (Dis) so
+that it doesn't apply to conditionals. Thus, even if successful, the argument only blocks the inference from a conditional's inclusion in $K_{A\lor B}^+$ to its inclusion in $K_A^+$. But in \gf's proof we move from $B \in K_{A\lor B}^+$ to $B \in K_A^+$, where $B$ is a non-conditional proposition, so qualifying (Dis) to non-conditional propositions does not seem to help.
+
+Another assumption that might be rejected is the following:
+
+(0) Belief sets include sentences that contain the conditional connective $>$ as elements.\footnote{\gffp{157}.}
+
+Some argue that conditionals, or at least conditionals for which the Ramsey test holds, are not objects of belief.\footnote{E.g., Levi (1988), Leitgeb (2010).} Instead, conditionals are acceptable relative to a belief state, where acceptability is different from belief. A conditional is acceptable for an agent, on such a view, just in case the agent's current state satisfies the Ramsey test. Such views reject (0) and thus avoid the triviality result; (RT) then becomes: $A>C$ is acceptable relative to $K$ iff $C>K_A^*$. Given this version of (RT), \gf's proof no longer works.
+
+\section{Conditional probability}
+
+\subsection{Stalnaker's thesis}
+
+Consider Stalnaker's thesis:\footnote{Stalnaker (1970).}
+
+(ST) $P(A>C)=P(C|A)$
+
+According to (ST), the probability of a conditional is equal to the conditional probability of the consequent given the antecedent. (ST) seems very plausible, and is closely related to the Ramsey test; it is also suggested by the Ramsey quote from earlier. To make the relation between (ST) and (RT) more precise, consider the following probabilistic version of the Ramsey test:\footnote{I take this formulation from \gffp{163}.}
+
+(PRT) $P(A>C)=P_A^*(C)$
+
+Where $P_A^*$ is a probability function obtained from $P$ given a new belief $A$. Consider the following principle of conditionalization:
+
+(C) $P_A^*(C)=P(C|A)$
+
+Then (PRT) is equivalent to (ST). That is, given (C), the Ramsey test amounts to the thesis that probabilities of conditionals are conditional probabilities. But (ST) too has been shown to lead to triviality. Specifically, Lewis (1976) has shown:
+
+\textbf{Triviality Theorem 2.} If $P$ is a probability function and $A$ and $C$ propositions such that $P(A\land C)>0$ and $P(A\land \neg C)>0$, then $P(C|A)=P(C)$.
+
+Required for the proof is the principle of Exportation:
+
+(Exportation) $P(A>C|B)=P(C|A\land B)$
+
+Exportation is entailed by (ST) and the conditionalization principle (C).\footnote{The proof is based on Lewis's (1976, p. 299) remarks.}
+
+\begin{proof}
+By (C) and (ST), $P(A>C|B)=P_B^*(A>C)=P_B^*(C|A)$.
+Then:
+\begin{equation*}
+\begin{split}
+    P_B^*(C|A) &= \dfrac{P_B^*(C \land A)}{P_B^*(A)}, \text{ by definition} \\
+    &= \dfrac{P(C \land A|B)}{P(A|B)}, \text{ by (C)} \\
+    &= \dfrac{P(C \land A \land B)}{P(A\land B)} \\
+    &= P(C|A\land B) \\
+\end{split}
+\end{equation*}
+\end{proof}
+
+We can now derived the triviality theorem for (ST).
+
+\begin{proof}
+Suppose $P$ is a probability function and $A$ and $C$ propositions such that $P(A\land C)>0$ and $P(A\land \neg C)>0$.
+
+By Exportation, $P(A>C|C)=P(C|A\land C)$ and so $P(A>C|C)=1$. Similarly, $P(A>C|\neg C)=P(C|A\land \neg C)=0$.
+
+By the law of total probability we have $P(A>C)=P(A>C|\neg C)P(C) + P(A>C|\neg C)P(\neg C)$. Thus $P(A>C)=P(C)$, and by (ST) $P(C|A)=P(C)$.
+\end{proof}
+
+We get an absurd result: without any special assumptions we have shown that the probability of $C$ given $A$ is just the probability of $C$; that is, that any two events are independent. Lewis's triviality theorem seems a decisive refutation of (ST). Note that (ST) doesn't actually play a crucial role in the proof, for the result that $P(A>C)=P(C)$ is already absurd. Rather, it is Exportation that does the work. But Exportation can be seen as a generalization of (ST). Indeed, Exportation follows from (ST) and (C) as was indicated above. (And Exportation entails (ST) if $A>C$ and $A$ are probabilistically independent.) So if Exportation is rejected, (ST) should probably be rejected as well.
+
+\subsection{Discussion of the result}
+
+\subsubsection{Rejecting Exportation and (ST)}
+
+Exportation is problematic since together with some assumptions of classical probability it leads to an absurd result. But it's also problematic because it admits of counterexamples.\footnote{Rothschild (2013) makes a similar point.} In fact, some of the counterexamples to Ramsey's test are also counterexamples to Exportation. First, note that Exportation entails that $P(A>C|\neg C)=0$. Now consider our earlier cases. I believe that had Hitler invaded England ($A$), Germany would have won the war ($C$), and I still believe that given that Germany didn't win ($\neg C$). So $P(A>C|\neg C)$ should not equal $0$. Similarly, I believe that if Brown isn't the murderer then someone else is, and I still believe the conditional given that it's not the case that someone else is the murderer. In fact, in both cases I believe the conditional on the assumption that the consequent is false, because I'm certain that the antecedent is false as well.
+
+Consider also the following slightly different case from Rothschild (2013). Suppose there is a car defect such that if a car with the defect crashes its airbag fails, and if a car without the defect crashes its airbag works. Let $A>C$ mean that if the car crashes its airbag fails. Then the probability of having the defect is just $P(A>C)$. Again, according to Exportation, $P(A>C|\neg C)=0$. But this isn't plausible: given that the airbag works, the probability of having the defect isn't 0. So we have a case where Exportation fails and where we aren't certain that the antecedent is false; rather, we just don't believe that it is true. (E.g., perhaps if this car crashes its airbag will indeed fail.)
+
+Suppose further that having the defect and crashing are correlated such that the fact that the car crashes increases the probability that the car has the defect. That is, $P(A>C|A)$ is greater than $P(A>C)$. By Exportation we have that $P(C|A)$ is greater than $P(A>C)$. That is, the probability that the airbag fails given that the car crashed is greater than the probability the if a car crashes its airbag fails, which seems plausible. This is a direct counterexample to (ST). 
+
+Note that what all these cases have in common is the assumption of correlation between the conditional and its antecedent. In the Hitler case, for instance, the proposition that Hitler invaded England and the conditional that if he had invaded, Germany would have won are not independent, as it is assumed I would not believe both. That is, $P(A>C|A)\neq P(A>C)$. Given this, it is not surprising that a counterexample to (ST) is generated. For (ST) entails that $P(A>C|A)$ is equal to $P(A>(A>C))$ which is just $P(A>C)$. That is, (ST) entails $P(A>C|A) = P(A>C)$, which is exactly what those cases deny. On the other hand, when $A>C$ and $A$ are correlated, Exportation entails the negation of (ST). For suppose $P(A>C|A) \neq P(A>C)$. Exportation entails that $P(A>C|A)=P(C|A\land A)=P(C|A)$ and thus that $P(C|A) \neq P(A>C)$. This gives us a recipe for counterexamples to (ST).
+
+The above can be seen as a counterexample to the Ramsey test as well. Suppose I don't believe a certain car has the defect. That is, I don't believe that if it crashes its airbag will fail. But if I learned that the car did in fact crash, I would believe that its airbag failed, since I also believe that crashing makes having the defect very likely. This counterexample to the Ramsey test is slightly different from the ones considered in Section 1.3, as here I don't accept a conditional but do believe its consequent given its antecedent. This seems to be also a counterexample to the suppositional interpretation of the Ramsey test. Even when I just suppose that the car crashed (and not believe or pretend to believe it), it seems reasonable to conclude that its airbag failed because it's much more likely to have the defect.
+
+Finally, consider Exportation in AGM. I take the following to be the AGM analogue of Exportation.
+
+(EX) $A>C \in K_B^*$ iff $C \in K_{A\land B}^*$.
+
+Then (RT) entails (EX).
+
+\begin{proof}
+
+($\Rightarrow$) Assume $A>C \in K_B^*$. By (RT), $C\in (K_B^*)_A^*$. Then, by $\pst{*3}$, $\pst{*5}$, and $\pst{*8}$, we have $C\in K_{A\land B}^*$.
+
+($\Leftarrow$) Assume $C \in K_{A\land B}^*$. By, $\pst{*4}$ and $\pst{*7}$ we get $C \in (K_B^*)_A^*$. By (RT), $A>C \in K_B^*$.
+\end{proof}
+
+If Lewis's result gives us a reason to reject Exportation, then we have a reason to reject (EX) as well, and thus another reason to reject (RT).
+
+\subsubsection{Rejecting other assumptions}
+
+The above strengthens the case against (ST) and indirectly against (RT). Bradley (2007), however, argues that (ST) is not to blame. As with the AGM triviality result, Bradley argues that there is a preservation condition that must be rejected. He proves that the following condition, weaker than (ST), is sufficient for triviality:
+
+(PR) if $P(A)>0$, then:
+\begin{enumerate}
+    \item If $P(C)=1$, then $P(A>C)=1$.
+    \item If $P(C)=0$, then $P(A>C)=0$.
+\end{enumerate}
+
+But, Bradley notes, (PR) follows immediately from (PRT), the probabilistic equivalent of (RT), and the following probabilistic equivalent of Preservation:
+
+(P*4) If $P(A)>0$ and $P(C)=1$, then $P_A^*(C)=1$.
+
+Thus, we have to reject either (PRT) or (P*4). Bradley rejects (P*4) with an argument similar to the one against Preservation. Suppose there are three urns, A, B, and C. Exactly one of the urns contains a prize, but I don't know which. Further, I believe that if the prize is in A or B, then if it's not in A it's in B, and if the prize is in A or C, then if it's not in A it's in C. So $P((A \lor B)>(\neg A > B))=1$ and $P((A \lor C)>(\neg A > C))=1$. I then learn that $A$. By (P*4), $P_A^*((A \lor B)>(\neg A > B))=P_A^*((A \lor C)>(\neg A > C))=1$. But also $P_A^*(A \lor B)=P_A^*(A \lor C)=1$. We get that $P_A^*(\neg A > B)=P_A^*(\neg A > C)=1$, in contradiction to (CC), which Bradley argues should be accepted.
+
+Just as (PR) follows from (PRT) and (P*4), the following analogue of (PR) follows from (RT) and $\pst{*4}$ in AGM:
+
+(PR)$'$ if $\neg A \not\in K$, then:
+\begin{enumerate}
+    \item If $C \in K$, then $A>C \in K$.
+    \item If $\neg C \in K$, then $\neg(A>C) \in K$.
+\end{enumerate}
+
+\begin{proof} Let $A,C$ be consistent propositions and $K$ a consistent belief set.
+
+For 1, suppose $\neg A \not\in K$ and $C\in K$. By $\pst{*4}$, $C \in K_A^*$. By (RT), $A>C \in K$.
+
+For 2, suppose $\neg A \not\in K$ and $\neg C\in K$. Suppose for reductio that $\neg(A>C)\not\in K$. By $\pst{*4}$, $\neg C \in K_A^*$. By (RT), $A>\neg C \in K$. Since $\neg(A>C)\not\in K$, by $\pst{*4}$ we have $A>\neg C\in K_{A>C}^*$. Further, $A> C\in K_{A>C}^*$. It follows from (RT) that $C,\neg C \in (K_{A>C}^*)_A^*$. But $A$ is consistent, in contradiction to $\pst{*5}$.
+\end{proof}
+
+It might be interesting to consider whether in AGM there is a result similar to Bradley's such that triviality follows from (PR)$'$. I claim that there is: (PR)$'$ leads to triviality in AGM.
+
+\begin{proof}
+
+Suppose for reductio that $\langle \mathbf{K}, * \rangle$ is a non-trivial belief revision system that satisfies (PR)$'$, $\pst{*2}$, and $\pst{*5}$. Then there are pairwise disjoint sentences $A,B,C$ such that $K_{A\lor B}^*$ is a consistent belief sets.
+
+Consider $K_{A\lor B}^*$. We have $A \not\in K_{A\lor B}^*$. By $\pst{*2}$ we have $\neg\neg(A\lor B) \in K_{A\lor B}^*$. By (PR)$'$, $\neg (\neg A>\neg(A\lor B))\in K_{A\lor B}^*$. Also, $B\not\in K_{A\lor B}^*$. So, by (PR)$'$, $\neg(\neg B > (\neg A > \neg(A\lor B)) \in K_{A\lor B}^*$. Assuming that $A>$
+
+But $\neg A > \neg(A\lor B)$ is equivalent to $\neg B$. To see this, for $\Rightarrow$, suppose that $\neg A > \neg(A\lor B)$ and suppose for reductio that $B$. Then $B$ entails $\neg A$, and by Modus Ponens we get $\neg(A\lor B)$, which contradicts $B$. For $\Leftarrow$, suppose $\neg B$ and $\neg A$. Then $\neg(A\lor B)$ follows.
+
+Thus we have $\neg(\neg B > \neg B) \in K_{A\lor B}^*$. But $A\lor B$ is consistent, contradicting $\pst{*5}$.
+\end{proof}
+
+To sum up, we have considered several assumptions that lead to triviality: Exportation, Stalnaker's thesis, and Preservation. We have seen that each admits of counterexamples, although the case against Exportation and Stalnaker's thesis seems stronger than that against Preservation, and noted some analogues in the AGM theory of belief revision.
+
+\section*{References}
+
+\begin{itemize}
+    \item Barnett, D. (2008) Ramsey + Moore $\neq$ God. \textit{Analysis} 68:168-74.
+    \item Bennett, J. (2003) \textit{A Philosophical Guide to Conditionals}. Oxford: Clarendon Press.
+    \item Bradley, R. (2006) Adams Conditionals and Non-Monotonic Probabilities. \textit{Journal of Logic, Language and Information} 15: 65-81.
+    \item Bradley, R. (2007) A Defence of the Ramsey Test. \textit{Mind} 116:1-21.
+    \item Chalmers D., \hjk{} A. (2007) Ramsey + Moore = God. \textit{Analysis} 67:170-72.
+    \item \gf{}, P. \textit{Knowledge in Flux}. Cambridge MA: MIT Press.
+    \item Leitgeb, H. (2010) On the Ramsey Test without Triviality. \textit{Notre Dame Journal of Formal Logic} 51:21-54.
+    \item Leitgeb, H. (2011) God -- Moore = Ramsey (A Reply to Chalmers and \hjk). \textit{Topoi} 30:47-51.
+    \item Levi, I. (1988) Iteration of Conditionals and the Ramsey Test, \textit{Synthese} 76:49-81.
+    \item Lewis, D. (1976) Probabilities of conditionals and conditional probabilities. \textit{Philosophical Review} 85:297-315.
+    \item McGee, V. (2000) To Tell the Truth about Conditionals. \textit{Analysis} 60:107-11.
+    \item Ramsey, F. P. (1931). General propositions and causality. In R. B. Braithwaite, ed., \textit{The Foundations of Mathematics and Other Logical Essays}.
+    \item Rothschild, D. (2013) Do Indicative Conditionals Express Propositions? \textit{Nous} 47:49-68.
+    \item Rott, H. (1989) Conditionals and Theory Change: Revisions, Expansions and Additions. \textit{Synthese} 81:91-113.
+    \item Stalnaker, R. (1984) \textit{Inquiry}. Cambridge MA: MIT Press.
+    \item Stalnaker, R. (1970) Probability and conditionals. \textit{Philosophy of Science}, 37:64-80.
+\end{itemize}
+\end{document}
